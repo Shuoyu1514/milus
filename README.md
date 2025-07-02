@@ -44,20 +44,3 @@ podman run -d --pod milvus-pod --name milvus-minio -e "MINIO_ACCESS_KEY=minioadm
 podman run -d --pod milvus-pod --name milvus-standalone -e "ETCD_ENDPOINTS=localhost:2379" -e "MINIO_ADDRESS=localhost:9000" -v D:\wangshuoyu\Desktop\milus\volumes\milvus:/var/lib/milvus:Z milvusdb/milvus:v2.4.9 milvus run standalone
 </pre>
 
-## Milvus 常见索引类型
-
-- FLAT：暴力搜索，精度最高，速度慢，适合小数据量或高精度需求。
-- IVF_FLAT：倒排文件索引，适合大数据量，速度快，精度略有损失。
-- HNSW：基于图的近似最近邻索引，速度快，精度高，适合大规模检索。
-- AUTOINDEX：让 Milvus 自动选择最合适的索引类型（推荐新手用）。
-
-## score是越高越好吗？
-
-不是
-
-1. L2 距离（欧氏距离，metric_type="L2"）
-score 实际上是“距离”，越小越相似，越小越好。
-例如：score=0.1 比 score=0.5 更相似。
-2. 内积（IP，metric_type="IP" 或 "COSINE"）
-score 是“相似度”，越大越相似，越大越好。
-例如：score=0.9 比 score=0.5 更相似。
