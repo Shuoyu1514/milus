@@ -16,6 +16,7 @@
 
 ## Docker创建milvus实例
 
+创建数据存储目录
 <pre>
 cd D:\wangshuoyu\Desktop\milus
 New-Item -ItemType Directory -Force -Path ".\volumes\etcd"
